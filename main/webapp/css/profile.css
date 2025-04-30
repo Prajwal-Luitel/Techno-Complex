@@ -1,0 +1,168 @@
+@charset "UTF-8";
+
+
+    .profile-body {
+      background-color: #0a1a2f;
+      color: #e0e6ed;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .profile-box {
+      width: 90%;
+      max-width: 1300px;
+      margin: 20px auto;
+      background-color: #12263a;
+      padding: 50px;
+      border-radius: 24px;
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: row;
+      gap: 70px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .profile-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .profile-left {
+      flex: 0 0 360px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      border-right: 1px solid #1e3a5f;
+      padding-right: 50px;
+    }
+
+    .profile-left img {
+      width: 240px;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid #1e3a5f;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .upload-btn {
+      padding: 12px 20px;
+      background-color: #2563eb;
+      color: white;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .upload-btn:hover {
+      background-color: #1e40af;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .form-field label {
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: #cbd5e0;
+      font-size: 1.15rem;
+    }
+
+    .form-field input,
+    .form-field select {
+      padding: 16px;
+      border-radius: 12px;
+      background-color: #1e3a5f;
+      border: none;
+      color: white;
+      font-size: 1.15rem;
+      transition: all 0.2s ease;
+    }
+
+    .form-field input:focus,
+    .form-field select:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.5);
+    }
+
+    .form-field input:hover,
+    .form-field select:hover {
+      background-color: #243b55;
+    }
+
+    .role-text {
+      font-size: 1.2rem;
+      color: #a0aec0;
+      margin-top: 5px;
+      background-color: #1e3a5f;
+      padding: 8px 20px;
+      border-radius: 20px;
+    }
+
+    .profile-right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 60px;
+      row-gap: 35px;
+    }
+
+    .form-group .form-field {
+      flex: 1 1 45%;
+    }
+
+    .form-buttons {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 60px;
+      width: 100%;
+    }
+
+    .btn-save {
+      padding: 18px 40px;
+      background-color: #2563eb;
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-save:hover {
+      background-color: #1e40af;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-save:active {
+      transform: translateY(-1px);
+    }
+
+    .title {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 40px;
+      color: #ffffff;
+    }
+
+ 

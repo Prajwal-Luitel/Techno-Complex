@@ -1,0 +1,185 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+	line-height: 1.6;
+	color: #e6e6e6;
+	background-color: #0a1929;
+}
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
+.hero {
+	position: relative;
+	height: 400px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	color: white;
+	overflow: hidden;
+}
+
+.hero img {
+	position: absolute;
+	/* height: 100%; */
+	object-fit: cover;
+	z-index: -1;
+	opacity: 0.5;
+}
+
+.hero-content h1 {
+	font-size: 42px;
+	margin-bottom: 15px;
+}
+
+.hero-content p {
+	font-size: 18px;
+	max-width: 700px;
+	margin: 0 auto;
+}
+
+.about-section {
+	padding: 80px 0;
+	background-color: #0c2137;
+}
+
+.section-title {
+	font-size: 32px;
+	margin-bottom: 30px;
+	color: #ffffff;
+	text-align: center;
+	position: relative;
+}
+
+.section-title:after {
+	content: '';
+	display: block;
+	width: 80px;
+	height: 3px;
+	background-color: #4dabf7;
+	margin: 10px auto;
+}
+
+.about-content {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.about-text {
+	flex: 1;
+	padding-right: 40px;
+	min-width: 300px;
+}
+
+.about-text p {
+	margin-bottom: 20px;
+}
+
+.about-img {
+	flex: 1;
+	min-width: 300px;
+	height: 400px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+	overflow: hidden;
+	border-radius: 5px;
+}
+
+.about-img img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 5px;
+}
+
+.features {
+	background-color: #071a2a;
+	padding: 80px 0;
+}
+
+.features-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 30px;
+	margin-top: 50px;
+}
+
+.feature-box {
+	background-color: #0c2137;
+	padding: 30px;
+	border-radius: 5px;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+	transition: transform 0.3s;
+	border: 1px solid #163a5f;
+}
+
+.feature-box:hover {
+	transform: translateY(-10px);
+	border-color: #4dabf7;
+}
+
+.feature-box h3 {
+	color: #4dabf7;
+	margin-bottom: 15px;
+	font-size: 22px;
+}
+
+.feature-icon {
+	font-size: 40px;
+	margin-bottom: 20px;
+	color: #4dabf7;
+}
+
+.properties {
+	padding: 80px 0;
+	background-color: #0c2137;
+}
+
+.cta {
+	background-color: #1864ab;
+	padding: 80px 0;
+	text-align: center;
+	color: white;
+}
+
+.cta h2 {
+	font-size: 36px;
+	margin-bottom: 20px;
+}
+
+.cta p {
+	font-size: 18px;
+	margin-bottom: 30px;
+	max-width: 700px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.cta-button {
+	display: inline-block;
+	background-color: #051628;
+	color: #ffffff;
+	padding: 12px 30px;
+	border-radius: 5px;
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 16px;
+	transition: all 0.3s;
+	border: 1px solid #4dabf7;
+}
+
+.cta-button:hover {
+	background-color: #4dabf7;
+	color: #051628;
+}

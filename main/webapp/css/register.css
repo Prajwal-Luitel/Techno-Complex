@@ -1,0 +1,252 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    padding: 0 10px;
+    background: linear-gradient(to bottom right, #000000, #333333);
+}
+
+.wrapper {
+    width: 700px;
+    border-radius: 8px;
+    padding: 40px 35px;
+    text-align: center;
+    background: rgba(30, 30, 30, 0.85);
+    box-shadow: 10px 10px 30px rgba(64, 64, 64, 0.5);
+    border: 1px solid #333333;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #f0f0f0;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: relative;
+    margin-top: 15px;
+}
+
+.input-field {
+    position: relative;
+    margin: 25px 0;
+    width: 100%;
+}
+
+.form-row .input-field {
+    width: 48%;
+}
+
+.input-field label {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #8a8a8a;
+    font-size: 16px;
+    pointer-events: none;
+    transition: 0.2s ease;
+}
+
+.input-field input,
+.input-field select {
+    width: 100%;
+    height: 50px;
+    background: #252525;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: #e0e0e0;
+    padding: 0 15px;
+    border-radius: 4px;
+    border: 1px solid #3d3d3d;
+    transition: all 0.3s ease;
+}
+
+.input-field select {
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    padding-right: 30px;
+}
+
+.input-field select + label {
+    background: #252525;
+    font-size: 13px;
+    top: 0;
+    transform: translateY(-50%);
+    padding: 0 5px;
+}
+
+.input-field input:focus {
+    border-color: #4a6fa5;
+    box-shadow: 0 0 0 2px rgba(74, 111, 165, 0.2);
+}
+
+/* Label moves up when input is focused, is valid */
+.input-field input:focus ~ label,
+.input-field input:valid ~ label { 
+    font-size: 13px;
+    top: 0;
+    background: #1e1e1e;
+    padding: 0 5px;
+    color: #4a6fa5;
+    transform: translateY(-50%);
+}
+
+#email:not(:placeholder-shown) ~ label {
+    font-size: 13px;
+    top: 0;
+    background: #1e1e1e;
+    padding: 0 5px;
+    color: #4a6fa5;
+    transform: translateY(-50%);
+}
+
+/* Special handling for date field */
+.input-field.date-field label {
+    font-size: 13px;
+    top: 0;
+    background: #1e1e1e;
+    padding: 0 5px;
+    transform: translateY(-50%);
+}
+
+    .password-field {
+        position: relative;
+    }
+    
+    .toggle-password {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: #8a8a8a;
+        z-index: 10;
+    }
+    
+    .toggle-password:hover {
+        color: #4a6fa5;
+    }
+
+.wrapper a {
+    color: #4a6fa5;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.wrapper a:hover {
+    color: #6d8cc7;
+    text-decoration: underline;
+}
+
+button {
+    background: linear-gradient(135deg, #4a6fa5 0%, #3a5a8f 100%);
+    color: #ffffff;
+    font-weight: 600;
+    border: none;
+    padding: 14px 24px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background: linear-gradient(135deg, #3a5a8f 0%, #2a4a7f 100%);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+}
+
+.login {
+    text-align: center;
+    margin-top: 30px;
+    color: #8a8a8a;
+    font-size: 14px;
+}
+
+.login p {
+    margin-bottom: 0;
+}
+
+.file-input {
+    margin: 25px 0;
+    position: relative;
+}
+
+input[type="file"] {
+    padding: 10px;
+    border: 1px solid #3d3d3d;
+    border-radius: 4px;
+    background-color: #252525;
+    color: #8a8a8a;
+}
+
+input[type="file"]::file-selector-button {
+    background: #3d3d3d;
+    border: none;
+    color: #e0e0e0;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background: #4a6fa5;
+}
+
+/* Error message positioning and styling */
+.error {
+    color: red;
+    font-size: 0.8em;
+    position: absolute;
+    top: -50px; /* Increased space between error and input field */
+    left: 0;
+    width: 100%;
+    text-align: left;
+    font-weight: 500;
+}
+
+.success {
+    color: #4caf50;
+    font-size: 0.9em;
+    margin: 10px 0;
+    text-align: center;
+}
+
+/* Database error display at form level */
+form > .error {
+    position: relative;
+    top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+}

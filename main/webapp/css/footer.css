@@ -1,0 +1,103 @@
+ * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #3a86ff;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #2b76ef;
+      transform: translateY(-2px);
+    }
+
+    footer {
+      background-color: #0a0a0a;
+      padding: 4rem 2rem;
+      color: #adb5bd;
+      margin-top: auto;
+    }
+
+    .footer-content {   
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .footer-section h4 {
+      color: #f8f9fa;
+      margin-bottom: 1.5rem;
+      font-size: 1.4rem;
+    }
+
+    .footer-section p {
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links a {
+      color: #adb5bd;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: #3a86ff;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background-color: #1e1e1e;
+      color: #f8f9fa;
+      transition: background-color 0.3s, transform 0.3s;
+      font-size: 1.2rem;
+    }
+
+    .social-links a:hover {
+      background-color: #3a86ff;
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid #2d2d2d;
+      font-size: 0.9rem;
+    }
