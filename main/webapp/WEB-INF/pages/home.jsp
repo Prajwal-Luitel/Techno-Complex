@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.util.List,jakarta.servlet.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +19,7 @@
 	<jsp:include page="header.jsp" />
 	
 	<section class="hero">
+	<img src="${pageContext.request.contextPath}/resources/images/system/Apartment.png" alt="Modern Apartment">
         <div class="hero-content">
             <h1>Modern Living in Nepal</h1>
             <p>Experience premium apartment living with the perfect blend of comfort, convenience, and contemporary design at Techno Complex.</p>
@@ -28,41 +31,44 @@
         <div class="container">
             <h2 class="section-title">Featured Apartments</h2>
             <div class="apartment-container">
+            
+            <c:forEach items="${flatList}" var="flat">
                 <div class="apartment-card">
                     <div class="apartment-image">
-                        <img src="/api/placeholder/500/350" alt="Luxury Apartment">
-                        <a href="flat-details.html?id=luxury-studio" class="view-btn">View Details</a>
+                        <img src="${pageContext.request.contextPath}/resources/images/flat/${flat.image_Path}" alt="Luxury Apartment">
+                        <a href="${pageContext.request.contextPath}/flat" class="view-btn">View Details</a>
                     </div>
                     <div class="apartment-info">
-                        <h4 class="apartment-name">Luxury Studio Apartment</h4>
-                        <span class="apartment-category">Residential</span>
+                        <h4 class="apartment-name">${flat.name}</h4>
+                        <span class="apartment-category">${flat.category}</span>
                         <div class="apartment-details">
                             <div class="detail-item">
                                 <span class="detail-label">Size:</span>
-                                <span class="detail-value">450 sq ft</span>
+                                <span class="detail-value">${flat.size} sq.ft</span>
                             </div>
                             <div class="detail-item">
                                 <span class="detail-label">Living:</span>
-                                <span class="detail-value">1 Room</span>
+                                <span class="detail-value">${flat.livingroom}</span>
                             </div>
                             <div class="detail-item">
                                 <span class="detail-label">Bedroom:</span>
-                                <span class="detail-value">1</span>
+                                <span class="detail-value">${flat.bedroom}</span>
                             </div>
                             <div class="detail-item">
                                 <span class="detail-label">Kitchen:</span>
-                                <span class="detail-value">1</span>
+                                <span class="detail-value">${flat.kitchen} </span>
                             </div>
                             <div class="detail-item">
-                                <span class="detail-label">Furnished:</span>
-                                <span class="detail-value">Yes</span>
+                                <span class="detail-label">Furnishing</span>
+                                <span class="detail-value">${flat.furnishing}</span>
                             </div>
                         </div>
-                        <p class="price">NPR 18,000/month</p>
+                        <p class="price">Rs. ${flat.price}/month</p>
                     </div>
                 </div>
+            </c:forEach>    
                 
-                <div class="apartment-card">
+                <!-- <div class="apartment-card">
                     <div class="apartment-image">
                         <img src="/api/placeholder/500/350" alt="Modern Apartment">
                         <a href="flat-details.html?id=modern-2br" class="view-btn">View Details</a>
@@ -94,75 +100,8 @@
                         </div>
                         <p class="price">NPR 26,000/month</p>
                     </div>
-                </div>
+                </div> -->
                 
-                <div class="apartment-card">
-                    <div class="apartment-image">
-                        <img src="/api/placeholder/500/350" alt="Cozy Apartment">
-                        <a href="flat-details.html?id=cozy-1br" class="view-btn">View Details</a>
-                    </div>
-                    <div class="apartment-info">
-                        <h4 class="apartment-name">Cozy 1BR with Balcony</h4>
-                        <span class="apartment-category">Residential</span>
-                        <div class="apartment-details">
-                            <div class="detail-item">
-                                <span class="detail-label">Size:</span>
-                                <span class="detail-value">650 sq ft</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">Living:</span>
-                                <span class="detail-value">1 Room</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">Bedroom:</span>
-                                <span class="detail-value">1</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">Kitchen:</span>
-                                <span class="detail-value">1</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">Furnished:</span>
-                                <span class="detail-value">No</span>
-                            </div>
-                        </div>
-                        <p class="price">NPR 22,000/month</p>
-                    </div>
-                </div>
-
-                <div class="apartment-card">
-                    <div class="apartment-image">
-                        <img src="/api/placeholder/500/350" alt="Cozy Apartment">
-                        <a href="flat-details.html?id=cozy-1br" class="view-btn">View Details</a>
-                    </div>
-                    <div class="apartment-info">
-                        <h4 class="apartment-name">Cozy 1BR with Balcony</h4>
-                        <span class="apartment-category">Residential</span>
-                        <div class="apartment-details">
-                            <div class="detail-item">
-                                <span class="detail-label">Size:</span>
-                                <span class="detail-value">650 sq ft</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">Living:</span>
-                                <span class="detail-value">1 Room</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">Bedroom:</span>
-                                <span class="detail-value">1</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">Kitchen:</span>
-                                <span class="detail-value">1</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">Furnished:</span>
-                                <span class="detail-value">No</span>
-                            </div>
-                        </div>
-                        <p class="price">NPR 22,000/month</p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -179,7 +118,7 @@
                     <a href="about.html" class="read-more">Read more about our story <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="about-img">
-                    <img src="../crude/Happy Family.png" alt="About Techno Complex">
+                    <img src="${pageContext.request.contextPath}/resources/images/system/Happy Family.png" alt="About Techno Complex">
                 </div>
             </div>
         </div>

@@ -3,31 +3,74 @@ package com.technocomplex.model;
 import java.time.LocalDate;
 
 public class User_FlatModel {
-    private int user_Id;
+    private int userId;
+    private String profile;
+    private String userName;
     private int flat_Id;
+    private String flatName;
     private LocalDate Move_In_Date;
+    private String flatImage;
 	/**
-	 * @param user_Id
+	 * @param userId
+	 * @param profile
+	 * @param userName
 	 * @param flat_Id
+	 * @param flatName
 	 * @param move_In_Date
+	 * @param flatImage
 	 */
-	public User_FlatModel(int user_Id, int flat_Id, LocalDate move_In_Date) {
+	public User_FlatModel(int userId, String profile, String userName, int flat_Id, String flatName,
+			LocalDate move_In_Date, String flatImage) {
 		super();
-		this.user_Id = user_Id;
+		this.userId = userId;
+		this.profile = profile;
+		this.userName = userName;
 		this.flat_Id = flat_Id;
+		this.flatName = flatName;
 		Move_In_Date = move_In_Date;
+		this.flatImage = flatImage;
 	}
 	/**
-	 * @return the user_Id
+	 * 
 	 */
-	public int getUser_Id() {
-		return user_Id;
+	public User_FlatModel() {
+		super();
 	}
 	/**
-	 * @param user_Id the user_Id to set
+	 * @return the userId
 	 */
-	public void setUser_Id(int user_Id) {
-		this.user_Id = user_Id;
+	public int getUserId() {
+		return userId;
+	}
+	/**
+	 * @param userId the userId to set
+	 */
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	/**
+	 * @return the profile
+	 */
+	public String getProfile() {
+		return profile;
+	}
+	/**
+	 * @param profile the profile to set
+	 */
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
+	/**
+	 * @return the userName
+	 */
+	public String getUserName() {
+		return userName;
+	}
+	/**
+	 * @param userName the userName to set
+	 */
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	/**
 	 * @return the flat_Id
@@ -42,6 +85,18 @@ public class User_FlatModel {
 		this.flat_Id = flat_Id;
 	}
 	/**
+	 * @return the flatName
+	 */
+	public String getFlatName() {
+		return flatName;
+	}
+	/**
+	 * @param flatName the flatName to set
+	 */
+	public void setFlatName(String flatName) {
+		this.flatName = flatName;
+	}
+	/**
 	 * @return the move_In_Date
 	 */
 	public LocalDate getMove_In_Date() {
@@ -53,6 +108,20 @@ public class User_FlatModel {
 	public void setMove_In_Date(LocalDate move_In_Date) {
 		Move_In_Date = move_In_Date;
 	}
+	/**
+	 * @return the flatImage
+	 */
+	public String getFlatImage() {
+		return flatImage;
+	}
+	/**
+	 * @param flatImage the flatImage to set
+	 */
+	public void setFlatImage(String flatImage) {
+		this.flatImage = flatImage;
+	}
     
+    
+	
     
 }

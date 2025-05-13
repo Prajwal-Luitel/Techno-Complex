@@ -29,9 +29,14 @@ public class LoginController extends HttpServlet {
 	public LoginController() {
 		this.loginService = new LoginService();
 	}
-
+	
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * Handles GET requests for user login.
+	 *
+	 * @param request  HttpServletRequest object
+	 * @param response HttpServletResponse object
+	 * @throws ServletException if a servlet-specific error occurs
+	 * @throws IOException      if an I/O error occurs
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("WEB-INF/pages/login.jsp").forward(request, response);
@@ -57,11 +62,17 @@ public class LoginController extends HttpServlet {
 		if (loginStatus != null && loginStatus) {
 			SessionUtil.setAttribute(req, "username", username);
 			if (role.equals("admin")) {
-				CookieUtil.addCookie(resp, "role", "admin", 5 * 30); 
-				resp.sendRedirect(req.getContextPath() + "/dashboard"); // Redirect to /dashboard
+				req.setAttribute("success", "Redirecting to Dashboard");
+				
+				CookieUtil.addCookie(resp, "role", "admin", 60 * 60); //3 minute
+				req.setAttribute("redirect", req.getContextPath() + "/dashboard"); // Redirect to /dashboard
+				req.getRequestDispatcher("WEB-INF/pages/login.jsp").forward(req, resp);
 			} else {
-				CookieUtil.addCookie(resp, "role", "user", 5 * 30); 
-				resp.sendRedirect(req.getContextPath() + "/home"); // Redirect to /home
+				req.setAttribute("success", "Redirecting to Home");
+
+				CookieUtil.addCookie(resp, "role", "customer", 60* 60); // 3 minute
+				req.setAttribute("redirect", req.getContextPath() + "/home"); // Redirect to /home
+				req.getRequestDispatcher("WEB-INF/pages/login.jsp").forward(req, resp);
 			}
 		} else {
 			handleLoginFailure(req, resp, loginStatus);

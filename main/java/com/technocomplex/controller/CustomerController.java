@@ -6,27 +6,30 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
-import com.technocomplex.service.ProfilePicService;
-import com.technocomplex.util.SessionUtil;
+import com.technocomplex.model.FlatModel;
+import com.technocomplex.model.UserModel;
+import com.technocomplex.service.CustomerService;
 
 /**
- * @author Prajwal Luitel
+ * Servlet implementation class CustomerController
  */
-@WebServlet(asyncSupported = true, urlPatterns = { "/contact" })
-public class ContactController extends HttpServlet {
+@WebServlet("/customer")
+public class CustomerController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private final ProfilePicService profilePicService;   
+	private final CustomerService customerService;
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ContactController() {
-        super();
-        this.profilePicService = new ProfilePicService();
+    public CustomerController() {
+    	super();
+    	customerService = new CustomerService();
     }
-    
+
     /**
-	 * Handles GET requests for contact page.
+	 * Handles GET requests for customer page
+	 * It load all the customer data in table.
 	 *
 	 * @param request  HttpServletRequest object
 	 * @param response HttpServletResponse object
@@ -34,9 +37,8 @@ public class ContactController extends HttpServlet {
 	 * @throws IOException      if an I/O error occurs
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String profileUrl = profilePicService.getUserProfile((String) SessionUtil.getAttribute(request, "username"));
-		request.setAttribute("profileUrl", profileUrl);
-		request.getRequestDispatcher("WEB-INF/pages/contact.jsp").forward(request, response);
+		List<UserModel> userList = customerService.getUserList();
+		request.setAttribute("userList", userList);
+		request.getRequestDispatcher("WEB-INF/pages/admin/customer.jsp").forward(request, response);
 	}
-
 }

@@ -9,11 +9,9 @@ import java.sql.SQLException;
 import com.technocomplex.config.DbConfig;
 import com.technocomplex.model.UserModel;
 
-
-
 /**
  * RegisterService handles the registration of new customer. It manages database
- * interactions for student registration.
+ * interactions for customer registration.
  */
 public class RegisterService {
 
@@ -44,7 +42,7 @@ public class RegisterService {
 		}
 
 		String insertQuery = "INSERT INTO user (name, phone, email, dob, gender, username, password, role, profile_path) "
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)"; //9
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)"; // 9
 
 		try (PreparedStatement insertStmt = dbConn.prepareStatement(insertQuery)) {
 
@@ -58,7 +56,7 @@ public class RegisterService {
 			insertStmt.setString(7, userModel.getPassword());
 			insertStmt.setString(8, "customer"); // setting the role to customer
 			insertStmt.setString(9, userModel.getProfileImageUrl());
-            
+
 			return insertStmt.executeUpdate() > 0;
 		} catch (SQLException e) {
 			System.err.println("Error during student registration: " + e.getMessage());
@@ -66,69 +64,69 @@ public class RegisterService {
 			return null;
 		}
 	}
-		/**
-		 * Checks if a username already exists in the database.
-		 *
-		 * @param username the username to check
-		 * @return true if taken, false otherwise
-		 */
-		public boolean isUsernameTaken(String username) {
-			if (dbConn == null) {
-				return false;
-			}
 
-			String query = "SELECT 1 FROM user WHERE username = ?";
-			try (PreparedStatement selectStmt = dbConn.prepareStatement(query)) {
-				selectStmt.setString(1, username);
-				ResultSet result = selectStmt.executeQuery();
-				return result.next();
-			} catch (SQLException e) {
-				e.printStackTrace();
-				return false;
-			}
+	/**
+	 * Checks if a username already exists in the database.
+	 *
+	 * @param username the username to check
+	 * @return true if taken, false otherwise
+	 */
+	public boolean isUsernameTaken(String username) {
+		if (dbConn == null) {
+			return false;
 		}
 
-		/**
-		 * Checks if an phone already exists in the database.
-		 *
-		 * @param phone the phone to check
-		 * @return true if taken, false otherwise
-		 */
-		public boolean isPhoneTaken(String phone) {
-			if (dbConn == null) {
-				return false;
-			}
-			String query = "SELECT 1 FROM user WHERE phone = ?";
-			try (PreparedStatement selectStmt = dbConn.prepareStatement(query)) {
-				selectStmt.setString(1, phone);
-				ResultSet result = selectStmt.executeQuery();
-				return result.next();
-			} catch (SQLException e) {
-				e.printStackTrace();
-				return false;
-			}
+		String query = "SELECT 1 FROM user WHERE username = ?";
+		try (PreparedStatement selectStmt = dbConn.prepareStatement(query)) {
+			selectStmt.setString(1, username);
+			ResultSet result = selectStmt.executeQuery();
+			return result.next();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
 		}
+	}
 
-		/**
-		 * Checks if an email already exists in the database.
-		 *
-		 * @param email the email to check
-		 * @return true if taken, false otherwise
-		 */
-		public boolean isEmailTaken(String email) {
-			if (dbConn == null) {
-				return false;
-			}
-			String query = "SELECT 1 FROM user WHERE email = ?";
-			try (PreparedStatement selectStmt = dbConn.prepareStatement(query)) {
-				selectStmt.setString(1, email);
-				ResultSet result = selectStmt.executeQuery();
-				return result.next();
-			} catch (SQLException e) {
-				e.printStackTrace();
-				return false;
-			}
-		
+	/**
+	 * Checks if an phone already exists in the database.
+	 *
+	 * @param phone the phone to check
+	 * @return true if taken, false otherwise
+	 */
+	public boolean isPhoneTaken(String phone) {
+		if (dbConn == null) {
+			return false;
+		}
+		String query = "SELECT 1 FROM user WHERE phone = ?";
+		try (PreparedStatement selectStmt = dbConn.prepareStatement(query)) {
+			selectStmt.setString(1, phone);
+			ResultSet result = selectStmt.executeQuery();
+			return result.next();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	/**
+	 * Checks if an email already exists in the database.
+	 *
+	 * @param email the email to check
+	 * @return true if taken, false otherwise
+	 */
+	public boolean isEmailTaken(String email) {
+		if (dbConn == null) {
+			return false;
+		}
+		String query = "SELECT 1 FROM user WHERE email = ?";
+		try (PreparedStatement selectStmt = dbConn.prepareStatement(query)) {
+			selectStmt.setString(1, email);
+			ResultSet result = selectStmt.executeQuery();
+			return result.next();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
 
 	}
 }

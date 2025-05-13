@@ -8,14 +8,12 @@ import java.sql.SQLException;
 
 import com.technocomplex.config.DbConfig;
 import com.technocomplex.model.UserModel;
-import com.technocomplex.util.PasswordUtil;
 
 public class ProfileService {
 
 	private Connection dbConn;
 	private boolean isConnectionError = false;
 
-	
 	public ProfileService() {
 		try {
 			dbConn = DbConfig.getDbConnection();
@@ -25,6 +23,14 @@ public class ProfileService {
 		}
 	}
 
+	/**
+	 * Retrieves full user information from the database based on the provided
+	 * username.
+	 *
+	 * @param username The username of the user to retrieve
+	 * @return A UserModel object containing the user's details, or null if not
+	 *         found or on connection error
+	 */
 	public UserModel getUserInformation(String username) {
 		if (isConnectionError) {
 			return null;
@@ -36,29 +42,48 @@ public class ProfileService {
 			ResultSet result = selectStmt.executeQuery();
 
 			if (result.next()) {
-	            return new UserModel(
-	                result.getInt("user_id"),
-	                result.getString("name"),
-	                result.getString("phone"),
-	                result.getString("email"),
-	                result.getDate("dob").toLocalDate(),
-	                result.getString("gender"),
-	                result.getString("username"),
-	                result.getString("password"),
-	                result.getString("role"),
-	                result.getString("profile_path")
-	            );
+				return new UserModel(result.getInt("user_id"), result.getString("name"), result.getString("phone"),
+						result.getString("email"), result.getDate("dob").toLocalDate(), result.getString("gender"),
+						result.getString("username"), result.getString("password"), result.getString("role"),
+						result.getString("profile_path"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
-   
+
 	/**
-	 * Update a existing user in the database.
+	 * Retrieves the user ID from the database using the provided username.
 	 *
-	 * @param userModel the user details to be updated
+	 * @param username The username whose user ID is to be fetched
+	 * @return The user ID if found, or null if not found or on connection error
+	 */
+	public Integer getUserId(String username) {
+		if (isConnectionError) {
+			return null;
+		}
+
+		String query = "SELECT user_id FROM user WHERE username = ?";
+		try (PreparedStatement selectStmt = dbConn.prepareStatement(query)) {
+			selectStmt.setString(1, username);
+			ResultSet result = selectStmt.executeQuery();
+
+			if (result.next()) {
+				return result.getInt("user_id");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	/**
+	 * Updates an existing user's information in the database. The user is
+	 * identified by the user ID contained in the UserModel object.
+	 *
+	 * @param userModel     the user details to be updated
+	 * @param currentUserId The ID of the current user to exclude from the check
 	 * @return Boolean indicating the success of the operation
 	 */
 	public Boolean updateUser(UserModel userModel) {
@@ -66,8 +91,8 @@ public class ProfileService {
 			System.err.println("Database connection is not available.");
 			return null;
 		}
-		
-		String updateSQL‎ = "Update  user SET name = ?, phone = ?, email = ?, dob = ?, gender = ?, username = ?, password = ?, profile_path = ? WHERE user_id = ?"; 
+
+		String updateSQL‎ = "Update  user SET name = ?, phone = ?, email = ?, dob = ?, gender = ?, username = ?, password = ?, profile_path = ? WHERE user_id = ?";
 
 		try (PreparedStatement preparedStatement = dbConn.prepareStatement(updateSQL‎)) {
 
@@ -81,7 +106,7 @@ public class ProfileService {
 			preparedStatement.setString(7, userModel.getPassword());
 			preparedStatement.setString(8, userModel.getProfileImageUrl());
 			preparedStatement.setInt(9, userModel.getUserId());
-            
+
 			return preparedStatement.executeUpdate() > 0;
 		} catch (SQLException e) {
 			System.err.println("Error during student registration: " + e.getMessage());
@@ -89,11 +114,12 @@ public class ProfileService {
 			return null;
 		}
 	}
-	
+
 	/**
 	 * Checks if a username already exists in the database.
 	 *
-	 * @param username the username to check
+	 * @param username      the username to check
+	 * @param currentUserId The ID of the current user to exclude from the check
 	 * @return true if taken, false otherwise
 	 */
 	public boolean isUsernameTaken(String username, int currentUserId) {
@@ -116,7 +142,8 @@ public class ProfileService {
 	/**
 	 * Checks if an phone already exists in the database.
 	 *
-	 * @param phone the phone to check
+	 * @param phone         the phone to check
+	 * @param currentUserId The ID of the current user to exclude from the check
 	 * @return true if taken, false otherwise
 	 */
 	public boolean isPhoneTaken(String phone, int currentUserId) {
@@ -138,7 +165,8 @@ public class ProfileService {
 	/**
 	 * Checks if an email already exists in the database.
 	 *
-	 * @param email the email to check
+	 * @param email         the email to check
+	 * @param currentUserId The ID of the current user to exclude from the check
 	 * @return true if taken, false otherwise
 	 */
 	public boolean isEmailTaken(String email, int currentUserId) {

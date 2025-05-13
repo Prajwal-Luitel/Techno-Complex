@@ -77,6 +77,31 @@ public class UserModel {
 	 * @param gender
 	 * @param userName
 	 * @param password
+	 * @param role
+	 * @param profileImageUrl
+	 */
+	public UserModel (String name, String phone, String email, LocalDate dob, String gender,
+			String userName, String password,  String role, String profileImageUrl) {
+		super();
+		this.name = name;
+		this.phone = phone;
+		this.email = email;
+		this.dob = dob;
+		this.gender = gender;
+		this.userName = userName;
+		this.password = password;
+		this.role = role;
+		this.profileImageUrl = profileImageUrl;
+	}
+	
+	/**
+	 * @param name
+	 * @param phone
+	 * @param email
+	 * @param dob
+	 * @param gender
+	 * @param userName
+	 * @param password
 	 * @param profileImageUrl
 	 */
 	public UserModel (String name, String phone, String email, LocalDate dob, String gender,
@@ -93,6 +118,29 @@ public class UserModel {
 	}
 	
 	
+	
+	/**
+	 * @param userId
+	 * @param name
+	 * @param phone
+	 * @param email
+	 * @param dob
+	 * @param gender
+	 * @param userName
+	 * @param profileImageUrl
+	 */
+	public UserModel(int userId, String name, String phone, String email, LocalDate dob, String gender, String userName,
+			String profileImageUrl) {
+		super();
+		this.userId = userId;
+		this.name = name;
+		this.phone = phone;
+		this.email = email;
+		this.dob = dob;
+		this.gender = gender;
+		this.userName = userName;
+		this.profileImageUrl = profileImageUrl;
+	}
 	/**
 	 * 
 	 * @param userName

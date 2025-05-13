@@ -9,7 +9,6 @@ import com.technocomplex.config.DbConfig;
 import com.technocomplex.model.UserModel;
 import com.technocomplex.util.PasswordUtil;
 
-
 /**
  * Service class for handling login operations. Connects to the database,
  * verifies user credentials, and returns login status.
@@ -52,7 +51,7 @@ public class LoginService {
 
 			if (result.next()) {
 				return validatePassword(result, userModel);
-			} 
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
@@ -60,13 +59,13 @@ public class LoginService {
 
 		return false;
 	}
-	
+
 	/**
 	 * Validates the password retrieved from the database.
 	 *
-	 * @param result       the ResultSet containing the username and password from
-	 *                     the database
-	 * @param userModel the StudentModel object containing user credentials
+	 * @param result    the ResultSet containing the username and password from the
+	 *                  database
+	 * @param userModel the UserModel object containing user credentials
 	 * @return true if the passwords match, false otherwise
 	 * @throws SQLException if a database access error occurs
 	 */
@@ -77,12 +76,13 @@ public class LoginService {
 		return dbUsername.equals(userModel.getUserName())
 				&& PasswordUtil.decrypt(dbPassword, dbUsername).equals(userModel.getPassword());
 	}
-	
+
 	/**
 	 * Retrieves the role of a user based on their user ID from the database.
 	 *
 	 * @param userId The ID of the user whose role is to be fetched.
-	 * @return The role of the user as a String if found; null if not found or an error occurs.
+	 * @return The role of the user as a String if found; null if not found or an
+	 *         error occurs.
 	 */
 	public String userRole(String userName) {
 		if (isConnectionError) {
@@ -97,13 +97,12 @@ public class LoginService {
 
 			if (result.next()) {
 				return result.getString("role");
-			} 
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
 		return null;
 	}
-
 
 }

@@ -125,12 +125,7 @@
 					required> <label for="profile"></label>
 			</div>
 
-			<!-- Success message if present -->
-			<c:if test="${not empty success}">
-				<p class="success">${success}</p>
-			</c:if>
-
-			<button type="submit">Sign Up</button>
+			<button type="submit" class="signup-button">Sign Up</button>
 		</form>
 
 		<div class="login">
@@ -140,6 +135,29 @@
 			</p>
 		</div>
 	</div>
+	
+    <!-- Popup success box -->
+    <div class="popup-container">
+        <div class="success-popup">
+            <div class="popup-header">
+                <div class="icon-container">
+                    <div class="success-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="title">
+                        <h3>Registration Successful</h3>
+                    </div>
+                </div>
+                <button class="close-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <p>${success}</p>
+            
+            <button class="confirm-btn">Go to Login</button>
+        </div>
+    </div>
 </body>
 <script>
     function togglePasswordVisibility(inputId) {
@@ -157,4 +175,24 @@
         }
     }
 </script>
+
+<c:if test="${not empty success}">
+    <script>
+        //  functionality to show the popup
+        const closeButton = document.querySelector('.close-btn');
+        const popup = document.querySelector('.popup-container');
+        const confirmButton = document.querySelector('.confirm-btn');
+        popup.style.display = "flex"; // Show the popup
+        closeButton.addEventListener('click', () => {
+                popup.style.display = 'none';
+        });
+        
+        confirmButton.addEventListener('click', () => {
+        	window.location.href = '${pageContext.request.contextPath}/login';
+        });
+    </script>
+</c:if>
+
+
+
 </html>

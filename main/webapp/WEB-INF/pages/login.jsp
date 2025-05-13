@@ -8,9 +8,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Techno complex</title>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" type="text/css"
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/login.css" />
 </head>
 <body>
@@ -23,10 +23,6 @@
 				<p class="error">${error}</p>
 			</c:if>
 
-			<!-- Display success message if available -->
-			<c:if test="${not empty success}">
-				<p class="success">${success}</p>
-			</c:if>
 
 			<div class="input-field">
 				<input type="text" id="username" name="username" required> <label>Username</label>
@@ -46,6 +42,28 @@
 			</div>
 		</form>
 	</div>
+
+
+    <!-- Popup success box -->
+    <div class="popup-container">
+        <div class="success-popup">
+            <div class="popup-header">
+                <div class="icon-container">
+                    <div class="success-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="title">
+                        <h3>Login Successful</h3>
+                    </div>
+                </div>
+            </div>
+            
+            <p>${success}</p>
+            
+            <button class="confirm-btn">Okay</button>
+        </div>
+    </div>
+
 </body>
 <script>
 	document.getElementById('togglePassword').addEventListener(
@@ -66,4 +84,23 @@
 				}
 			});
 </script>
+
+<c:if test="${not empty success}">
+    <script>
+        //  functionality to show the popup
+        const closeButton = document.querySelector('.close-btn');
+        const popup = document.querySelector('.popup-container');
+        const confirmButton = document.querySelector('.confirm-btn');
+        popup.style.display = "flex"; // Show the popup
+       
+        setTimeout(() => {
+        	window.location.href = "${redirect}";
+        }, 3000); //If user don't click okay in 3s this will redirect to related page i.e home or dashboard.
+        
+        confirmButton.addEventListener('click', () => {
+        	window.location.href = "${redirect}";
+        });
+    </script>
+</c:if>
+
 </html>

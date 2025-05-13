@@ -72,6 +72,7 @@
       display: flex;
       flex-direction: column;
       width: 100%;
+       position: relative;  
     }
 
     .form-field label {
@@ -165,4 +166,16 @@
       color: #ffffff;
     }
 
+/* Error message positioning and styling */
+/* Error message positioning and styling */
+.error {
+	color: red;
+	font-size: 0.8rem;
+	position: absolute;
+	top: -35px; /* Increased space between error and input field */
+	left: 0;
+	width: 100%;
+	text-align: left;
+	font-weight: 500;
+}
  

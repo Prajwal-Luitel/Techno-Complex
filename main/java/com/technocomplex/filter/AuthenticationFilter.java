@@ -25,10 +25,12 @@ public class AuthenticationFilter implements Filter {
 	private static final String CONTACT = "/contact";
 	private static final String ABOUT = "/about";
 	private static final String PROFILE = "/profile";
+	private static final String LOGOUT = "/logout";
 	private static final String ROOT = "/";
 	// Admin
 	private static final String DASHBOARD = "/dashboard";
 	private static final String MANAGEFLAT = "/manageflat";
+	private static final String CUSTOMER = "/customer";
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
@@ -72,19 +74,19 @@ public class AuthenticationFilter implements Filter {
 			// Admin is logged in
 			if (uri.endsWith(LOGIN) || uri.endsWith(REGISTER)) {
 				res.sendRedirect(req.getContextPath() + DASHBOARD);
-			} else if (uri.endsWith(DASHBOARD) || uri.endsWith(MANAGEFLAT) || uri.endsWith(ROOT)
-					|| uri.endsWith(HOME) || uri.endsWith(ABOUT) || uri.endsWith(CONTACT)
-					|| uri.endsWith(FLAT) || uri.endsWith(PROFILE)){
+			} else if (uri.endsWith(DASHBOARD) || uri.endsWith(MANAGEFLAT) || uri.endsWith(CUSTOMER)
+					|| uri.endsWith(ROOT) || uri.endsWith(HOME) || uri.endsWith(ABOUT) || uri.endsWith(CONTACT)
+					|| uri.endsWith(FLAT) || uri.endsWith(PROFILE) || uri.endsWith(LOGOUT)) {
 				chain.doFilter(request, response);
 			} else {
 				res.sendRedirect(req.getContextPath() + DASHBOARD);
 			}
-		} else if ("user".equals(userRole)) {
+		} else if ("customer".equals(userRole)) {
 			// User is logged in
 			if (uri.endsWith(LOGIN) || uri.endsWith(REGISTER)) {
 				res.sendRedirect(req.getContextPath() + HOME);
 			} else if (uri.endsWith(HOME) || uri.endsWith(ROOT) || uri.endsWith(ABOUT) || uri.endsWith(CONTACT)
-					|| uri.endsWith(FLAT) || uri.endsWith(PROFILE)) {
+					|| uri.endsWith(FLAT) || uri.endsWith(PROFILE) || uri.endsWith(LOGOUT)) {
 				chain.doFilter(request, response);
 			} else if (uri.endsWith(DASHBOARD) || uri.endsWith(MANAGEFLAT)) {
 				res.sendRedirect(req.getContextPath() + HOME);

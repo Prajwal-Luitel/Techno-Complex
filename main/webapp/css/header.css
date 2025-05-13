@@ -60,10 +60,16 @@ nav {
 	font-weight: bold;
 }
 
-.search-container {
+.search-form {
 	display: flex;
 	align-items: center;
 	width: 40%;
+}
+
+.search-container {
+	flex: 1;
+	display: flex;
+	align-items: center;
 	background-color: #1e1e1e;
 	border-radius: 30px;
 	overflow: hidden;
@@ -170,5 +176,28 @@ nav {
 }
 
 .profile-dropdown a:not(:last-child) {
+	border-bottom: 1px solid #2d2d2d;
+}
+
+.profile-dropdown button {
+	display: block;
+	padding: 14px 18px;
+	color: #f8f9fa;
+	background: none;
+	border: none;
+	width: 100%;
+	text-align: left;
+	font-size: 1rem;
+	cursor: pointer;
+	font-weight: 500;
+	transition: background-color 0.3s;
+}
+
+.profile-dropdown button:hover {
+	background-color: rgba(58, 134, 255, 0.1);
+	color: #3a86ff;
+}
+
+.profile-dropdown button:not(:last-child) {
 	border-bottom: 1px solid #2d2d2d;
 }

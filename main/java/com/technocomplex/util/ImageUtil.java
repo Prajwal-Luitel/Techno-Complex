@@ -94,8 +94,15 @@ public class ImageUtil {
 			return false; // Upload failed
 		}
 	}
-	
+
+	/**
+	 * Constructs and returns the absolute file system path for saving files within
+	 * the specified subfolder under the images directory.
+	 *
+	 * @param saveFolder The name of the subfolder within the images directory
+	 * @return The full path to the specified save folder
+	 */
 	public String getSavePath(String saveFolder) {
-		return "C:/Users/prajw/eclipse-workspace/Teachno Complex/src/main/webapp/resources/images/"+saveFolder+"/";
+		return "C:/Users/prajw/eclipse-workspace/Teachno Complex/src/main/webapp/resources/images/" + saveFolder + "/";
 	}
 }
