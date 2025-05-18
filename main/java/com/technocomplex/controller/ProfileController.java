@@ -1,3 +1,4 @@
+
 package com.technocomplex.controller;
 
 import jakarta.servlet.ServletException;
@@ -78,7 +79,7 @@ public class ProfileController extends HttpServlet {
 	 *             client
 	 * @param resp the HttpServletResponse object to assist in sending a response
 	 * @throws ServletException if the request could not be handled
-	 * @throws IOException      if an input or output error occurs 
+	 * @throws IOException      if an input or output error occurs
 	 */
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
@@ -231,7 +232,7 @@ public class ProfileController extends HttpServlet {
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 
-		//password validation is already done in validateRegistrationForm
+		// password validation is already done in validateRegistrationForm
 		password = PasswordUtil.encrypt(username, password);
 
 		Part image = req.getPart("profileImage");

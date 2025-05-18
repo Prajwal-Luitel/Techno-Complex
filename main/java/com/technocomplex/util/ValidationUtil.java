@@ -85,7 +85,7 @@ public class ValidationUtil {
 		String passwordRegex = "^(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
 		return password != null && password.matches(passwordRegex);
 	}
-
+ 
 	/**
 	 * Validates if the file submitted as a Part object is an image with a supported
 	 * extension: jpg, jpeg, png, or gif.

@@ -264,20 +264,20 @@ public class UserModel {
 		this.password = password;
 	}
 
-	
-	
 	/**
 	 * @return the role
 	 */
 	public String getRole() {
 		return role;
 	}
+	
 	/**
 	 * @param role the role to set
 	 */
 	public void setRole(String role) {
 		this.role = role;
 	}
+	
 	/**
 	 * @return the profileImageUrl
 	 */

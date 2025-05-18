@@ -11,7 +11,10 @@ import com.technocomplex.service.ProfilePicService;
 import com.technocomplex.util.SessionUtil;
 
 /**
+ * Servlet implementation class ContactController
+ * 
  * @author Prajwal Luitel
+ * LMU Id 23048626
  */
 @WebServlet(asyncSupported = true, urlPatterns = { "/contact" })
 public class ContactController extends HttpServlet {
@@ -40,3 +43,4 @@ public class ContactController extends HttpServlet {
 	}
 
 }
+

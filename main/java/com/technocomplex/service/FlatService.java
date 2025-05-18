@@ -29,35 +29,6 @@ public class FlatService {
 	}
 
 	/**
-	 * Retrieves a list of all available flats from the database.
-	 *
-	 * @return a list of available FlatModel objects, or null if a connection error
-	 *         occurs.
-	 */
-	public List<FlatModel> getFlatList() {
-		if (isConnectionError) {
-			return null;
-		}
-
-		List<FlatModel> flatList = new ArrayList<>();
-		String query = "SELECT * FROM flat";
-
-		try (PreparedStatement selectStmt = dbConn.prepareStatement(query);
-				ResultSet result = selectStmt.executeQuery()) {
-
-			while (result.next()) {
-				flatList.add(new FlatModel(result.getString("name"), result.getString("category"),
-						result.getInt("price"), result.getInt("size"), result.getInt("living"),
-						result.getInt("bedroom"), result.getInt("kitchen"), result.getString("furnishing"),
-						result.getString("image_Path")));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return flatList;
-	}
-
-	/**
 	 * Searches for available flats in the database based on the search query,
 	 * category, and sorting order. Optionally filters by category, and can sort the
 	 * results by price.
@@ -75,13 +46,19 @@ public class FlatService {
 		}
 		List<FlatModel> flatList = new ArrayList<>();
 		StringBuilder query = new StringBuilder("SELECT * FROM flat WHERE status = 'available' AND LOWER(name) LIKE ?");
+		// Ensure searchQuery is safe
+		if (searchQuery == null || searchQuery.trim().isEmpty()) {
+			searchQuery = ""; // match all with LIKE '%%'
+		}
 		// Apply category filter
 		if (category != null && !category.equals("any")) {
 			query.append(" AND category = ?");
 		}
 		// Apply sort
-		if (sort.equals("high")) {
-			query.append(" ORDER BY price DESC");
+		if (sort != null && sort.equals("high")) {
+			query.append(" ORDER BY price DESC;");
+		} else {
+			query.append(" ORDER BY price;");
 		}
 		try (PreparedStatement stmt = dbConn.prepareStatement(query.toString())) {
 			stmt.setString(1, "%" + searchQuery.toLowerCase() + "%");
@@ -102,3 +79,4 @@ public class FlatService {
 		return flatList;
 	}
 }
+

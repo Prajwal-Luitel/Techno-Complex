@@ -73,7 +73,7 @@ public class ManageFlatController extends HttpServlet {
 			}
 
 		} catch (Exception e) {
-//			handleDataBaseError(req, resp, "An unexpected error occurred. Please try again later!");
+			handleDataBaseError(req, resp, "An unexpected error occurred. Please try again later!");
 			e.printStackTrace(); // Log the exception
 		}
 		doGet(req, resp);
@@ -119,19 +119,7 @@ public class ManageFlatController extends HttpServlet {
 			handleDataBaseError(req, resp, "Our server is under maintenance. Please try again later!");
 		}
 	}
-	/*
-	 * d // Unused method private void handleSuccess(HttpServletRequest req,
-	 * HttpServletResponse resp, String message, String redirectPage) throws
-	 * ServletException, IOException { req.setAttribute("success", message);
-	 * req.getRequestDispatcher(redirectPage).forward(req, resp); }
-	 * 
-	 * private void handleError(HttpServletRequest req, HttpServletResponse resp,
-	 * String[] message) throws ServletException, IOException {
-	 * req.setAttribute("error", message);
-	 * req.getRequestDispatcher("/WEB-INF/pages/manageflat.jsp").forward(req, resp);
-	 * }
-	 */
-
+	
 	/**
 	 * Handles and displays database-related error messages.
 	 *

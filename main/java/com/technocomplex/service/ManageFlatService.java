@@ -29,10 +29,9 @@ public class ManageFlatService {
 	}
 
 	/**
-	 * Retrieves a list of all available flats from the database.
+	 * Retrieves a list of all flats from the database.
 	 *
 	 * This method checks if there is a connection error before executing the query.
-	 * Only flats with a status of 'available' are included in the result.
 	 *
 	 * @return a list of available FlatModel objects, or null if a connection error
 	 *         occurs.
@@ -43,7 +42,7 @@ public class ManageFlatService {
 		}
 
 		List<FlatModel> flatList = new ArrayList<>();
-		String query = "SELECT * FROM flat WHERE status = 'available'";
+		String query = "SELECT * FROM flat;";
 
 		try (PreparedStatement selectStmt = dbConn.prepareStatement(query);
 				ResultSet result = selectStmt.executeQuery()) {
@@ -76,7 +75,6 @@ public class ManageFlatService {
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; // 10
 
 		try (PreparedStatement insertStmt = dbConn.prepareStatement(insertQuery)) {
-
 			// Insert user details
 			insertStmt.setString(1, flatModel.getName());
 			insertStmt.setString(2, flatModel.getCategory());
@@ -113,7 +111,6 @@ public class ManageFlatService {
 				+ "bedroom = ?, kitchen = ?, furnishing = ?, image_path = ?, status = ? WHERE flat_id = ?";
 
 		try (PreparedStatement updateStmt = dbConn.prepareStatement(updateQuery)) {
-
 			// Set flat attributes in the update statement
 			updateStmt.setString(1, flatModel.getName());
 			updateStmt.setString(2, flatModel.getCategory());

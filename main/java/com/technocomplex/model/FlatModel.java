@@ -117,7 +117,7 @@ public class FlatModel {
 	public void setFlat_Id(int flat_Id) {
 		this.flat_Id = flat_Id;
 	}
-
+    
 	/**
 	 * @return the name
 	 */
@@ -229,14 +229,14 @@ public class FlatModel {
 	public void setFurnishing(String furnishing) {
 		this.furnishing = furnishing;
 	}
-
+  
 	/**
 	 * @return the image_Path
 	 */
 	public String getImage_Path() {
 		return image_Path;
 	}
-
+  
 	/**
 	 * @param image_Path the image_Path to set
 	 */

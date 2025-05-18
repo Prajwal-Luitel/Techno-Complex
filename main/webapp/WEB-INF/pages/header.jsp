@@ -9,7 +9,7 @@
 	</div>
 
 	<form class="search-form"
-		action="${pageContext.request.contextPath}/flat" method="post">
+		action="${pageContext.request.contextPath}/flat" method="get">
 		<div class="search-container">
 			<input type="text" name="searchQuery"
 				placeholder="Search apartments, locations...">

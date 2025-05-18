@@ -14,6 +14,9 @@ import com.technocomplex.service.CustomerService;
 
 /**
  * Servlet implementation class CustomerController
+ * 
+ * @author Prajwal Luitel
+ * LMU Id 23048626
  */
 @WebServlet("/customer")
 public class CustomerController extends HttpServlet {

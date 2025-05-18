@@ -30,10 +30,10 @@
 		</div>
 
 		<form class="search-form"
-			action="${pageContext.request.contextPath}/flat" method="post">
+			action="${pageContext.request.contextPath}/flat" method="get">
 			<div class="search-container">
 				<input type="text" name="searchQuery"
-					placeholder="Search apartments, locations...">
+					placeholder="Search apartments, locations..." value="${searchQuery}">
 				<button type="submit">
 					<i class="fas fa-search"></i>
 				</button>
@@ -54,13 +54,14 @@
 
 			<div class="profile-container">
 				<img
-					src="${pageContext.request.contextPath}/resources/images/customer/${profileUrl}" 
+					src="${pageContext.request.contextPath}/resources/images/customer/${profileUrl}"
 					alt="Profile" class="profile-pic">
 				<div class="profile-dropdown">
 					<a href="${pageContext.request.contextPath}/profile">Profile</a> <a
 						href="${pageContext.request.contextPath}/myflat">My Flats</a>
 					<!-- <a href="#">Logout</a>  -->
-					<form action="${pageContext.request.contextPath}/logout" method="post">
+					<form action="${pageContext.request.contextPath}/logout"
+						method="post">
 						<button type="submit" class="logout-btn">Logout</button>
 					</form>
 
@@ -75,33 +76,33 @@
 				<h2>Filters</h2>
 				<h3>Category</h3>
 				<div class="category-item">
-					<input type="radio" id="any" name="category" value="any" checked>
+					<input type="radio" id="any" name="category" value="any" checked >
 					<div class="custom-radio"></div>
 					<label for="any">Any</label>
 				</div>
 				<div class="category-item">
-					<input type="radio" id="studio" value="studio" name="category">
+					<input type="radio" id="studio" value="studio" name="category" ${category == 'studio' ? 'checked' : ''}>
 					<div class="custom-radio"></div>
 					<label for="studio">Studio</label>
 				</div>
 				<div class="category-item">
-					<input type="radio" id="duplex" value="duplex" name="category">
+					<input type="radio" id="duplex" value="duplex" name="category" ${category == 'duplex' ? 'checked' : ''}>
 					<div class="custom-radio"></div>
 					<label for="duplex">Duplex</label>
 				</div>
 				<div class="category-item">
-					<input type="radio" id="garden" value="garden" name="category">
+					<input type="radio" id="garden" value="garden" name="category" ${category == 'garden' ? 'checked' : ''}>
 					<div class="custom-radio"></div>
 					<label for="garden">Garden</label>
 				</div>
 				<div class="category-item">
-					<input type="radio" id="loft" value="loft" name="category">
+					<input type="radio" id="loft" value="loft" name="category" ${category == 'loft' ? 'checked' : ''}>
 					<div class="custom-radio"></div>
 					<label for="loft">Loft</label>
 				</div>
 				<div class="category-item">
 					<input type="radio" id="penthouse" value="penthouse"
-						name="category">
+						name="category" ${category == 'penthouse' ? 'checked' : ''}>
 					<div class="custom-radio"></div>
 					<label for="penthouse">Penthouse</label>
 				</div>
@@ -110,8 +111,8 @@
 			<div class="filter-section">
 				<h3>Sort By</h3>
 				<select class="sort-select" name="sort">
-					<option value="low">Price: Low to High</option>
-					<option value="high">Price: High to Low</option>
+					<option value="low" ${sort == 'low' ? 'selected' : ''}>Price: Low to High</option>
+					<option value="high" ${sort == 'high' ? 'selected' : ''} >Price: High to Low</option>
 				</select>
 			</div>
 		</aside>
@@ -119,8 +120,8 @@
 		<section class="content">
 
 			<c:if test="${empty flatList}">
-				<div class="empty-flat">
-					No apartments found matching your search criteria.</div>
+				<div class="empty-flat">No apartments found matching your
+					search criteria.</div>
 			</c:if>
 			<div class="apartments-grid">
 				<!-- Apartment 1 -->
@@ -162,41 +163,6 @@
 						</div>
 					</div>
 				</c:forEach>
-				<!-- BLUE PRINT -->
-				<!--                 <div class="apartment-card">
-                    <img src="/api/placeholder/800/600" alt="Urban Loft"
-                        class="apartment-image">
-                    <div class="apartment-details">
-                        <div class="apartment-header">
-                            <h2 class="apartment-name">Urban Loft</h2>
-                            <div class="furnished-status">Not Furnished</div>
-                        </div>
-                        <div class="apartment-category-container">
-                            <div class="apartment-category">Loft</div>
-                        </div>
-                        
-                        <div class="apartment-specs">
-                            <div class="spec-item">
-                                <span class="spec-label">Size:</span> <span class="spec-value">850
-                                    sq.ft</span>
-                            </div>
-                            <div class="spec-item">
-                                <span class="spec-label">Living:</span> <span class="spec-value">1</span>
-                            </div>
-                            <div class="spec-item">
-                                <span class="spec-label">Bedroom:</span> <span
-                                    class="spec-value">1</span>
-                            </div>
-                            <div class="spec-item">
-                                <span class="spec-label">Kitchen:</span> <span
-                                    class="spec-value">1</span>
-                            </div>
-                        </div>
-                        <div class="apartment-price">$2,450/month</div>
-                    </div>
-                </div> -->
-
-
 			</div>
 		</section>
 	</main>
